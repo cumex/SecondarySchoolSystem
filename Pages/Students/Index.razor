@@ -1,0 +1,56 @@
+﻿@page "/students"
+<h3>Student</h3>
+
+@inject Data.StudentService studentService
+
+<small>Add as many as you want.</small>
+<div class="form-group">
+    <a class="btn btn-success" href="developer/create"><i class="oi oi-plus"></i> Create New</a>
+</div>
+<br>
+
+@if (students == null)
+{
+    <p><em>Loading...</em></p>
+}
+else if (students.Count == 0)
+{
+<p>No Records Found.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Student Number</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var student in students)
+            {
+                <tr>
+                    <td>@student.FirstName</td>
+                    <td>@student.LastName</td>
+                    <td>@student.Number</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    List<Data.Student> students = new List<Data.Student>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await RefreshStudents();
+    }
+
+    private async Task RefreshStudents()
+    {
+        students = await studentService.GetStudentsAsync();
+    }
+
+}
