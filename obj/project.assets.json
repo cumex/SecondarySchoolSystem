@@ -1599,11 +1599,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\nathan\\source\\repos\\SchoolDatabase\\SchoolDatabase.csproj",
+      "projectUniqueName": "C:\\Users\\nathan\\source\\repos\\SecondarySchoolSystem\\SchoolDatabase.csproj",
       "projectName": "SchoolDatabase",
-      "projectPath": "C:\\Users\\nathan\\source\\repos\\SchoolDatabase\\SchoolDatabase.csproj",
+      "projectPath": "C:\\Users\\nathan\\source\\repos\\SecondarySchoolSystem\\SchoolDatabase.csproj",
       "packagesPath": "C:\\Users\\nathan\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\nathan\\source\\repos\\SchoolDatabase\\obj\\",
+      "outputPath": "C:\\Users\\nathan\\source\\repos\\SecondarySchoolSystem\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

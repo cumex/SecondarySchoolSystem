@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ebkyIT+zkCUEHEvbt4ePJ9Ss1xBYfdnhGzXi1w4JHEmLquD11AWWs7DjnqOCLvCHpD184unEkP13QQefReymKg==",
+  "dgSpecHash": "R0VRrrIm8mDJuzfxp2hodWS7oKGJLJvBvBudOsTvg3uqbm/DvOlaHjZ4bN8LxUmc+WeIg9oWqow/u+OEckwMgg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\nathan\\source\\repos\\SchoolDatabase\\SchoolDatabase.csproj",
+  "projectFilePath": "C:\\Users\\nathan\\source\\repos\\SecondarySchoolSystem\\SchoolDatabase.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\nathan\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\3.1.8\\microsoft.aspnetcore.cryptography.internal.3.1.8.nupkg.sha512",
     "C:\\Users\\nathan\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\3.1.8\\microsoft.aspnetcore.cryptography.keyderivation.3.1.8.nupkg.sha512",
