@@ -1,0 +1,56 @@
+﻿@page "/Students/Add/"
+@inject NavigationManager NavigationManager;
+@inject Data.StudentService StudentService
+
+<h3>Add Student</h3>
+
+<div>
+    <hr/>
+    <EditForm Model="@_student" OnValidSubmit="@HandleValidSubmit">
+
+        <dl class="row">
+
+            <dt class="col-sm-2">
+                Student Number
+            </dt>
+            <dd class="col-sm-10">
+                <InputText id="Number" @bind-Value="_student.Number"/> <ValidationMessage For="@(() => _student.Number)"/>
+            </dd>
+
+            <dt class="col-sm-2">
+                First Name
+            </dt>
+            <dd class="col-sm-10">
+                <InputText id="FirstName" @bind-Value="_student.FirstName"/> <ValidationMessage For="@(() => _student.FirstName)"/>
+            </dd>
+
+            <dt class="col-sm-2">
+                Last Name
+            </dt>
+            <dd class="col-sm-10">
+                <InputText id="LastName" @bind-Value="_student.LastName"/> <ValidationMessage For="@(() => _student.LastName)"/>
+            </dd>
+
+        </dl>
+
+        <button type="submit" class="btn btn-success">Submit</button>
+        <DataAnnotationsValidator/>
+        <ValidationSummary/>
+    </EditForm>
+</div>
+
+<div>
+    <a href="/Students/">Back to List</a>
+</div>
+
+@code {
+    private Data.Student _student = new Data.Student();
+
+    private async Task HandleValidSubmit()
+    {
+        await StudentService.AddStudentAsync(_student);
+
+        NavigationManager.NavigateTo("/students");
+    }
+
+}

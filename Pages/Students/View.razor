@@ -1,0 +1,75 @@
+﻿@page "/Students/View/{StudentId:int}"
+@inject Data.StudentService StudentService
+
+<h3>View Student</h3>
+
+<div>
+    <hr/>
+    @if (_student == null)
+    {
+        <p>
+            <em>Loading...</em>
+        </p>
+    }
+    else if (_student.StudentId == 0)
+    {
+        <p>No Records Found.</p>
+    }
+    else
+    {
+        <dl class="row">
+
+            <dt class="col-sm-2">
+                StudentId
+            </dt>
+            <dd class="col-sm-10">
+                @_student.StudentId
+            </dd>
+
+            <dt class="col-sm-2">
+                Student Number
+            </dt>
+            <dd class="col-sm-10">
+                @_student.Number
+            </dd>
+
+            <dt class="col-sm-2">
+                First Name
+            </dt>
+            <dd class="col-sm-10">
+                @_student.FirstName
+            </dd>
+
+            <dt class="col-sm-2">
+                Last Name
+            </dt>
+            <dd class="col-sm-10">
+                @_student.LastName
+            </dd>
+
+        </dl>
+    }
+</div>
+
+<div>
+    <a href="/Students/Edit/@_student.StudentId">Edit</a> | <a href="/Students/">Back to List</a>
+</div>
+
+@code {
+
+    [Parameter]
+    public int StudentId { get; set; }
+
+    Data.Student _student = new Data.Student();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await RefreshStudent(StudentId);
+    }
+
+    private async Task RefreshStudent(int studentId)
+    {
+        _student = await StudentService.GetStudentAsync(studentId);
+    }
+
+}

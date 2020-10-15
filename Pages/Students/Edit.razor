@@ -1,0 +1,90 @@
+﻿@page "/Students/Edit/{StudentId:int}"
+@inject NavigationManager NavigationManager;
+@inject Data.StudentService StudentService
+
+<h3>Edit Student</h3>
+
+<div>
+    <hr/>
+    @if (_student == null)
+    {
+        <p>
+            <em>Loading...</em>
+        </p>
+    }
+    else if (_student.StudentId == 0)
+    {
+        <p>No Records Found.</p>
+    }
+    else
+    {
+        <EditForm Model="@_student" OnValidSubmit="@HandleValidSubmit">
+
+            <dl class="row">
+
+                <dt class="col-sm-2">
+                    StudentId
+                </dt>
+                <dd class="col-sm-10">
+                    @_student.StudentId
+                </dd>
+
+                <dt class="col-sm-2">
+                    Student Number
+                </dt>
+                <dd class="col-sm-10">
+                    <InputText id="Number" @bind-Value="_student.Number"/> <ValidationMessage For="@(() => _student.Number)"/>
+                </dd>
+
+                <dt class="col-sm-2">
+                    First Name
+                </dt>
+                <dd class="col-sm-10">
+                    <InputText id="FirstName" @bind-Value="_student.FirstName"/> <ValidationMessage For="@(() => _student.FirstName)"/>
+                </dd>
+
+                <dt class="col-sm-2">
+                    Last Name
+                </dt>
+                <dd class="col-sm-10">
+                    <InputText id="LastName" @bind-Value="_student.LastName"/> <ValidationMessage For="@(() => _student.LastName)"/>
+                </dd>
+
+            </dl>
+
+            <button type="submit" class="btn btn-success">Submit</button>
+            <DataAnnotationsValidator/>
+            <ValidationSummary/>
+        </EditForm>
+    }
+</div>
+
+<div>
+    <a href="/Students/View/@_student.StudentId">View</a> |
+    <a href="/Students/">Back to List</a>
+</div>
+
+@code {
+
+    [Parameter]
+    public int StudentId { get; set; }
+
+    private Data.Student _student = new Data.Student();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await RefreshStudent(StudentId);
+    }
+
+    private async Task RefreshStudent(int studentId)
+    {
+        _student = await StudentService.GetStudentAsync(studentId);
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        await StudentService.UpdateStudentAsync(_student);
+        NavigationManager.NavigateTo($"/Students/View/{StudentId}");
+    }
+
+}
