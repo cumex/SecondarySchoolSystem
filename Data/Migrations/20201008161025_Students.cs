@@ -16,10 +16,7 @@ namespace SchoolDatabase.Data.Migrations
                     FirstName = table.Column<string>(nullable: false),
                     LastName = table.Column<string>(nullable: false)
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Students", x => x.StudentId);
-                });
+                constraints: table => { table.PrimaryKey("PK_Students", x => x.StudentId); });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
